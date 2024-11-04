@@ -11,17 +11,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @MicronautTest
-public class HelloControllerTest {
+public class JorgeControllerTest {
 
     @Inject
     @Client("/")
     HttpClient client;
 
     @Test
-    void testHelloEndpoint() {
-        HttpRequest<String> request = HttpRequest.GET("/hello");
+    void testJorgeEndpoint() {
+        HttpRequest<String> request = HttpRequest.GET("/hello/jorge");
         HttpResponse<String> response = client.toBlocking().exchange(request, String.class);
-
-        assertEquals("Hello, World!", response.body());
+        //este json siempre se debe obtener para asegurar que la prueba de integracion fue existosa
+        assertEquals("hola Jorge", response.body());
     }
 }
