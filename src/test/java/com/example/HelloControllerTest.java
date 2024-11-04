@@ -22,17 +22,6 @@ public class HelloControllerTest {
         HttpRequest<String> request = HttpRequest.GET("/hello");
         HttpResponse<String> response = client.toBlocking().exchange(request, String.class);
 
-          assertEquals("Hello, World!", response.body());
+        assertEquals("Hello, Jess!", response.body());
     }
-
-    
-    @Test
-    void testHelloEndpointIxe() {
-        HttpRequest<String> request = HttpRequest.GET("/hello/Ixe");
-        HttpResponse<String> response = client.toBlocking().exchange(request, String.class);
-
-        assertEquals("Hola, soy Ixe", response.body());
-    }
-} 
-
-
+}
