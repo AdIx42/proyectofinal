@@ -8,6 +8,11 @@ public class HelloController {
 
     @Get("/")
     public String hello() {
-        return "Hello, World!";
+        return "Hello, Worldx!";
+    }
+    
+    @Get("/Ixe")
+    public String hello() {
+        return "Hola, soy Ixe";
     }
 }

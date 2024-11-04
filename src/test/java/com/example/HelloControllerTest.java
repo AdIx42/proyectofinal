@@ -24,4 +24,12 @@ public class HelloControllerTest {
 
         assertEquals("Hello, World!", response.body());
     }
+    
+    @Test
+    void testHelloEndpointIxe() {
+        HttpRequest<String> request = HttpRequest.GET("/hello/Ixe");
+        HttpResponse<String> response = client.toBlocking().exchange(request, String.class);
+
+        assertEquals("Hola, soy Ixe", response.body());
+    }
 } 
