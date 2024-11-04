@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker run -p 8080:8082 -v C:\Users\Adan\Desktop\Volume:/app adanbrooks/devopsfinal'
+                sh 'docker run -p 8080:8082 -v C:\\Users\\Adan\\Desktop\\Volume:/app adanbrooks/devopsfinal'
             }
         }
     }
