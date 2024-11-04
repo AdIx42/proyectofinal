@@ -6,15 +6,20 @@ pipeline {
                 bat 'docker build -f Dockerfile.build -t adix42/proyectofinal .'
             }
         }
-        stage('Dockerhub Login') {
+        stage('Run') {
             steps {
-                bat 'echo ${DOCKER_HUB_CREDENTIALS_PSW} | docker login -u ${DOCKER_HUB_CREDENTIALS_USR} --password-stdin'
+                bat 'docker run --name=proyectofinal -v D:/devenv/docker:/app/target adix42/proyectofinal'
             }
         }
-        stage('Push') {
-            steps {
-                bat 'docker push adix42/proyectofinal .'
-            }
-        }
+//        stage('Dockerhub Login') {
+//            steps {
+//                bat 'echo ${DOCKER_HUB_CREDENTIALS_PSW} | docker login -u ${DOCKER_HUB_CREDENTIALS_USR} --password-stdin'
+//            }
+//        }
+//        stage('Push') {
+//            steps {
+//                bat 'docker push adix42/proyectofinal .'
+//            }
+//        }
 }
 }
