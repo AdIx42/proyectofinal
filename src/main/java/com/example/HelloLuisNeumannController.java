@@ -11,6 +11,6 @@ public class HelloLuisNeumannController {
 
     @Get("/")
     public String sayHelloToLuisNeumann() {
-        return "Hello Luis Neumann";
+        return "Hello Luis Neumann!";
     }
 }
