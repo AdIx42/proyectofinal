@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @MicronautTest
-public class HelloControllerTest {
+public class AlanControllerTest {
 
     @Inject
     @Client("/")
@@ -19,9 +19,9 @@ public class HelloControllerTest {
 
     @Test
     void testHelloEndpoint() {
-        HttpRequest<String> request = HttpRequest.GET("/hello");
+        HttpRequest<String> request = HttpRequest.GET("/Saludar");
         HttpResponse<String> response = client.toBlocking().exchange(request, String.class);
 
-        assertEquals("Hello, World!", response.body());
+        assertEquals("Buenos dias Alan", response.body());
     }
 }
