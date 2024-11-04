@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Push') {
             steps {
-                bat 'docker image push adix42/proyectofinal:latest .'
+                bat 'docker push adix42/proyectofinal .'
             }
         }
 }
