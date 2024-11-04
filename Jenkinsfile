@@ -8,14 +8,14 @@ pipeline {
             steps {
                 script {
                     //cualquier sh que vean, en windows es bat
-					bat 'docker build -t AdIx42/proyectofinal -f Dockerfile.test .'
+					bat 'docker build -t adix42/proyectofinal -f Dockerfile.test .'
                 }
             }
         }
         stage('Build') {
             steps {
                 script {
-                    bat 'docker build -t AdIx42/proyectofinal -f Dockerfile .'
+                    bat 'docker build -t adix42/proyectofinal -f Dockerfile .'
                 }
             }
         }
