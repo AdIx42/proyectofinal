@@ -22,6 +22,6 @@ public class ChocoControllerTest {
         HttpRequest<String> request = HttpRequest.GET("/choco");
         HttpResponse<String> response = client.toBlocking().exchange(request, String.class);
 
-        assertEquals("Vainilla", response.body());
+        assertEquals("Chocolate", response.body());
     }
 }
