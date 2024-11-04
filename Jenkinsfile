@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Test and Build') {
             steps {
-                sh 'docker build -f Dockerfile.build -t adanbrooks/devopsfinal .'
+                sh 'docker build -f Dockerfile.build -t adanbrooks27/devopsfinal .'
             }
         }
         stage('Dockerhub login') {
@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Push') {
             steps {
-                sh 'docker push adanbrooks/devopsfinal'
+                sh 'docker push adanbrooks27/devopsfinal'
             }
         }
         stage('Deploy') {
