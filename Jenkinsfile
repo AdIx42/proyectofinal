@@ -8,13 +8,13 @@ pipeline {
         }
         stage('Run') {
             steps {
-                bat 'docker run --name=proyectofinal -v D:/devenv/docker/proyectofinal:./app adix42/proyectofinal'
+                bat 'docker run --name=proyectofinal -v D:/devenv/docker/proyectofinal:/app adix42/proyectofinal'
             }
         }
         
          stage('Run renite') {
             steps {
-                bat 'docker run --name=proyectofinalremote -v \\dgefappp/ServiciosWeb/jars:./app adix42/proyectofinal'
+                bat 'docker run --name=proyectofinalremote -v \\dgefappp/ServiciosWeb/jars:/app adix42/proyectofinal'
             }
         }
         

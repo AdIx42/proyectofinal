@@ -34,5 +34,8 @@ WORKDIR /app
 # Copy the packaged jar from the build stage
 COPY --from=build /app/target/hello-world-micronaut-*.jar app.jar
 
-# Set the entry point to run the jar
-ENTRYPOINT ["java", "-jar", "app.jar"] 
+# Create a directory for mounting
+RUN mkdir -p /export
+
+# Copy JAR to mounted volume when container starts
+ENTRYPOINT ["cp", "app.jar", "/export/"] 
