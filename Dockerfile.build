@@ -1,4 +1,4 @@
-# Stage 1: Test
+# Use Maven directly in the build stage
 FROM maven:3.8.4-openjdk-17-slim AS test
 
 WORKDIR /app
@@ -10,15 +10,13 @@ RUN mvn dependency:go-offline
 # Copy the rest of the project files
 COPY . .
 
-# Run tests - if tests fail, the build will stop here
 RUN mvn test
 
-# Stage 2: Build
 FROM maven:3.8.4-openjdk-17-slim AS build
 
 WORKDIR /app
 
-# Copy the tested codebase from test stage
+# Copy the packaged jar from the build stage
 COPY --from=test /app /app
 
 COPY --from=test /root/.m2 /root/.m2
@@ -26,7 +24,7 @@ COPY --from=test /root/.m2 /root/.m2
 # Package the application
 RUN mvn clean package -DskipTests
 
-# Stage 3: Runtime
+# Use a lightweight JRE for the final image
 FROM openjdk:17-jdk-slim
 
 WORKDIR /app
@@ -34,8 +32,5 @@ WORKDIR /app
 # Copy the packaged jar from the build stage
 COPY --from=build /app/target/hello-world-micronaut-*.jar app.jar
 
-# Create a directory for mounting
-RUN mkdir -p /export
-
-# Copy JAR to mounted volume when container starts
-ENTRYPOINT ["cp", "app.jar", "/export/"] 
+# Set the entry point to run the jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
