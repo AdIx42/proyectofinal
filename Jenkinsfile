@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Run') {
             steps {
-                bat 'docker run --name=proyectofinal -v D:/devenv/docker:/app/target adix42/proyectofinal'
+                bat 'docker run --name=proyectofinal -v D:/devenv/docker/proyectofinal:/app/target adix42/proyectofinal'
             }
         }
 //        stage('Dockerhub Login') {
