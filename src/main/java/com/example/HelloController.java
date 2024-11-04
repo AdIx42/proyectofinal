@@ -10,4 +10,9 @@ public class HelloController {
     public String hello() {
         return "Hello, World!";
     }
+    
+    @Get("/Ixe")
+    public String helloIxe() {
+        return "Hola, soy Ixe";
+    }
 }
