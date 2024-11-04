@@ -12,7 +12,7 @@ public class HelloController {
     }
     
     @Get("/Ixe")
-    public String hello() {
+    public String helloIxe() {
         return "Hola, soy Ixe";
     }
 }
