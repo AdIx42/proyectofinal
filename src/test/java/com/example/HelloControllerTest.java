@@ -22,8 +22,9 @@ public class HelloControllerTest {
         HttpRequest<String> request = HttpRequest.GET("/hello");
         HttpResponse<String> response = client.toBlocking().exchange(request, String.class);
 
-        assertEquals("Hello, Worldx!", response.body());
+          assertEquals("Hello, World!", response.body());
     }
+
     
     @Test
     void testHelloEndpointIxe() {
@@ -33,3 +34,5 @@ public class HelloControllerTest {
         assertEquals("Hola, soy Ixe", response.body());
     }
 } 
+
+

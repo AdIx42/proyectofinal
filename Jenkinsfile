@@ -1,24 +1,17 @@
 pipeline {
     agent any
-//    environment {
-//        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials')
-//    }
     stages {
-        stage('Testing') {
+    stages {
+        stage('Test') {
             steps {
-                script {
-                    //cualquier sh que vean, en windows es bat
-					bat 'docker build -t adix42/proyectofinal -f Dockerfile.test .'
-                }
+                bat 'docker build -f Dockerfile.test -t AdIx42/proyectofinaltest .'
             }
         }
         stage('Build') {
             steps {
-                script {
-                    bat 'docker build -t adix42/proyectofinal -f Dockerfile .'
-                }
+                script {                   
+                   bat 'docker build -f Dockerfile -t AdIx42/proyectofinal .'
             }
         }
-       
     }
-}  
+}
