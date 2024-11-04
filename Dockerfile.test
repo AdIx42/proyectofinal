@@ -1,0 +1,12 @@
+FROM maven:3.8.4-openjdk-17-slim AS build
+
+WORKDIR /app
+
+# Copy the Maven project files and dependencies
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
+# Copy the rest of the project files
+COPY . .
+
+RUN mvn test
