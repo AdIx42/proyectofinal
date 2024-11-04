@@ -1,17 +1,25 @@
 pipeline {
     agent any
+    environment {
+        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials')
+    }
     stages {
-        stage('Test') {
+        stage('Test and Build') {
             steps {
-                bat 'docker build -f Dockerfile.test -t adix42/proyectofinaltest .'
+                sh 'docker build -f Dockerfile.build -t adix42/proyectofinal .'
             }
         }
-        stage('Build') {
+        stage('Dockerhub login') {
             steps {
-                script {                   
-                   bat 'docker build -f Dockerfile -t adix42/proyectofinal .'
+                script {
+                    sh 'echo ${DOCKER_HUB_CREDENTIALS_PSW} | docker login -u ${DOCKER_HUB_CREDENTIALS_USR} --password-stdin'
+                }
+            }
+        }
+        stage('Push') {
+            steps {
+                sh 'docker push adix42/proyectofinal'
             }
         }
     }
-}
 }
