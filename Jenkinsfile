@@ -1,23 +1,17 @@
 pipeline {
     agent any
-    
     stages {
         stage('Test') {
             steps {
-                script {
-                    //cualquier sh que vean, en windows es bat
-                    bat 'docker build -f Dockerfile.test jjsainfo/devopsfinaltests .'
-                }
+                bat 'docker build -f Dockerfile.test -t adix42/proyectofinaltest .'
             }
         }
         stage('Build') {
             steps {
-                script {
-                    //cualquier sh que vean, en windows es bat
-                    bat 'docker build -f Dockerfile -t jjsainfo/devopsfinal .'
-                }
+                script {                   
+                   bat 'docker build -f Dockerfile -t adix42/proyectofinal .'
             }
         }
-        
     }
+}
 }
