@@ -1,22 +1,32 @@
 pipeline {
     agent any
     stages {
-        stage('Test and Build') {
-            steps {
-                bat 'docker build -f Dockerfile.build -t adix42/proyectofinal .'
-            }
-        }
-        stage('Run') {
-            steps {
-                bat 'docker run --name=proyectofinal -v D:/devenv/docker/proyectofinal:/app adix42/proyectofinal'
-            }
-        }
         
-         stage('Run renite') {
+        stage('Reading environment variable defined in groovy file') {
             steps {
-                bat 'docker run --name=proyectofinalremote -v \\dgefappp/ServiciosWeb/jars:/app adix42/proyectofinal'
-            }
+                script {
+                    load "./env.groovy"
+                    echo "${env.env_var1}"
+                    echo "${env.env_var2}"
+                }
         }
+              
+  //      stage('Test and Build') {
+  //          steps {
+  //              bat 'docker build -f Dockerfile.build -t adix42/proyectofinal .'
+   //         }
+    //    }
+    //    stage('Run') {
+   //         steps {
+   //             bat 'docker run --name=proyectofinal -v D:/devenv/docker/proyectofinal:/app adix42/proyectofinal'
+   //         }
+   //     }
+        
+   //      stage('Run renite') {
+   //         steps {
+   //             bat 'docker run --name=proyectofinalremote -v \\dgefappp/ServiciosWeb/jars:/app adix42/proyectofinal'
+   //         }
+   //     }
         
 //        stage('Dockerhub Login') {
 //            steps {
