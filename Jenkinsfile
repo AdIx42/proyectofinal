@@ -8,7 +8,8 @@ pipeline {
                     load "./env.groovy"
                     echo "${env.env_var1}"
                     echo "${env.env_var2}"
-                }
+                      }
+            }
         }
               
   //      stage('Test and Build') {
